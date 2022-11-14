@@ -11,7 +11,7 @@ app.use( express.json() )
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true}))
 
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
 
 
 //* Detta är routrarna som finns nu som test, vilka i sin tur refererar till
