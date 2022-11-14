@@ -1,6 +1,7 @@
 const express = require('Express')
 const router = express.Router()
 const md2json = require('md-2-json');
+const fs = require('fs');
 
 router.get('/', (req, res) => {
     console.log(req.query.name)
@@ -8,14 +9,9 @@ router.get('/', (req, res) => {
 })
 
 router.get('/borealis', (req, res) => {
-    require("fs").readFile("views/air/example.md", "utf8", (err, data) => { 
-        console.log(data);
-        newData = md2json.parse(data);
-        console.log(newData)
-        res.send("Hejsan")
-
-             //res.render('air/borealis')
-    });
+    const content = fs.readFileSync('views/air/example.md','utf8').toString()
+    let newContent = md2json.parse(content)
+    res.send(newContent)
 })
 
 router.get('/uf', (req, res) => {
