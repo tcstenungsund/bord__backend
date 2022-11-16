@@ -14,19 +14,19 @@ app.use(express.urlencoded({ extended: true}))
 app.set('view engine', 'ejs');
 
 
-//* Detta är routrarna som finns nu som test, vilka i sin tur refererar till
-//* js-filerna i "routes"
+//* These are the routers in use, who in turn refer to the .js files in "routes"
 const airRouter = require('./routes/air.js')
 const fruitRouter = require('./routes/fruit.js')
+const jsonRouter = require('./routes/json.js')
 
-//* Här används de och refererar till "views\air" respektive "views\fruit",
-//* som är katalogerna där sidorna finns
+//* Here they are pointing to which folders to read from using which router
+//* The pages are all located in "views" and in there have their own folders
 app.use('/air', airRouter)
 app.use('/fruit', fruitRouter)
+app.use('/json', jsonRouter)
 
 
-
-//* Följande kommer eventuellt till användning senare
+//* The following might come in handy later on
 // app.get('/tshirt', (req, res) => {
 //     res.status(200).send({
 //         thirt: 'En t-tröja',
