@@ -14,7 +14,7 @@ The same applies for the fruit router; the **'/'** is is **'localhost:8080/fruit
 
 In the **index.js**, our home page for **localhost:8080/** is defined, and the page being rendered is **index.html**, which is located in **public/**.
 
-#### Markdown and JSON 
+#### Markdown and JSON:
 For the use of markdown files, sent out to the browser in the form of JSON data, I´m using a bit of converting.
 First, the markdown is fetched and stored in a variable. That variable is converted to HTML in a new variable, which is then converted to JSON. That JSON is sent out to the page, displayed either in JSON or Raw data.
 
