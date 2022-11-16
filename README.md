@@ -18,4 +18,4 @@ In the **index.js**, our home page for **localhost:8080/** is defined, and the p
 For the use of markdown files, sent out to the browser in the form of JSON data, I´m using a bit of converting.
 First, the markdown is fetched and stored in a variable. That variable is converted to HTML in a new variable, which is then converted to JSON. That JSON is sent out to the page, displayed either in JSON or Raw data.
 
-For now that is all it is, but hopefully that JSON data is going to be used to render whole pages with the help of the **Project Bord** frontend team. Stick around!
+For now that is all it is, but hopefully that JSON data is going to be used to render whole pages with the help of the **Project Bord** frontend team. Stick around to see more!
