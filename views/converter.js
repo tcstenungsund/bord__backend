@@ -23,10 +23,6 @@ let db = new sqlite3.Database("../db/themes.db");
 
 db.run("DELETE FROM molekylverkstan");
 
-// finalContent = JSON.stringify(pageArr[0].pageContent);
-// console.log(finalContent);
-// console.log(typeof finalContent);
-
 for (i = 0; i < pageArr.length; i++) {
   let pageID = i + 1;
   let finalName = JSON.stringify(pageArr[i].pageName);
