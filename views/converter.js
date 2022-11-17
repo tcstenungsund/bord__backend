@@ -18,3 +18,15 @@ function mdfinder() {
 }
 mdfinder();
 console.log(pageArr);
+
+const sqlite3 = require("sqlite3").verbose();
+let db = new sqlite3.Database("../db/themes.db");
+
+db.run(
+  "INSERT INTO molekylverkstan (page_name, page_content) VALUES (" +
+    pageName +
+    ", " +
+    pageContent +
+    ")"
+);
+>>>>>>> 695511295a54a72c9f4ad5b39beec4f8d5d90aa0
