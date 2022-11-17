@@ -9,3 +9,14 @@ for (const file in explorer) {
 
   //! Lägg varje file i variabel, converta variabeln
 }
+
+const sqlite3 = require("sqlite3").verbose();
+let db = new sqlite3.Database("../db/themes.db");
+
+db.run(
+  "INSERT INTO molekylverkstan (page_name, page_content) VALUES (" +
+    pageName +
+    ", " +
+    pageContent +
+    ")"
+);
