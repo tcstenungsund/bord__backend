@@ -28,9 +28,7 @@ for (i = 0; i < pageArr.length; i++) {
   let finalName = JSON.stringify(pageArr[i].pageName)
     .replace('"', "")
     .replace('"', "");
-  let finalContent = JSON.stringify(pageArr[i].pageContent)
-    .replace('""', "")
-    .replace('"', "");
+  let finalContent = JSON.stringify(pageArr[i].pageContent);
   db.run(
     "INSERT INTO molekylverkstan (page_id, page_name, page_content) VALUES (" +
       pageID +

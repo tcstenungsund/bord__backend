@@ -17,6 +17,6 @@ db.all(sqlQuery, [], (err, rows) => {
   });
 });
 
-console.log(sql);
+console.log(sqlQuery);
 
 db.close();

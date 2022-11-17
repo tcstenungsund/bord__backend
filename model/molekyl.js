@@ -16,25 +16,9 @@ router.get("/", (req, res) => {
     }
     rows.forEach((row) => {
       console.log(row.page_content);
+      res.status(200).send(row.page_content);
     });
   });
-  res.status(200).send(row.page_content);
 });
 
 module.exports = router;
-
-// const sqlite3 = require("sqlite3").verbose();
-// let db = new sqlite3.Database(":memory:", (err) => {
-//   if (err) {
-//     return console.error(err.message);
-//   }
-//   console.log("Connected to the in-memory SQlite database.");
-// });
-
-// close the database connection
-// db.close((err) => {
-//   if (err) {
-//     return console.error(err.message);
-//   }
-//   console.log("Close the database connection.");
-// })
