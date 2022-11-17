@@ -16,7 +16,7 @@ const fruitRouter = require("./routes/fruit.js");
 const jsonRouter = require("./routes/json.js");
 
 //* Here they are pointing to which folders to read from using which router
-//* The pages are all located in "views" and in there have their own folders
+//* The pages are all located in "pages" and in there have their own folders
 app.use("/air", airRouter);
 app.use("/fruit", fruitRouter);
 app.use("/json", jsonRouter);
