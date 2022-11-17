@@ -21,14 +21,15 @@ mdfinder();
 const sqlite3 = require("sqlite3").verbose();
 let db = new sqlite3.Database("../db/themes.db");
 
-db.run(
-  "DELETE FROM molekylverkstan",
-  "CREATE TABLE [IF NOT EXISTS] 'molekylverkstan' (page_id INTEGER PRIMARY KEY, page_name TEXT NOT NULL, page_content TEXT NOT NULL);"
-);
+db.run("DELETE FROM molekylverkstan");
+
 for (i = 0; i < pageArr.length - 1; i++) {
   console.log(pageArr[i].pageName);
   db.run(
-    "INSERT INTO molekylverkstan (page_name, page_content) VALUES ('" +
+    "INSERT INTO molekylverkstan (page_id, page_name, page_content) VALUES (" +
+      i +
+      1 +
+      ", '" +
       pageArr[i].pageName +
       "', '" +
       pageArr[i].pageContent +
