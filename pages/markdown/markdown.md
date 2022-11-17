@@ -1,9 +1,9 @@
-# JSON
+# Om oss
 
-## The second largest heading
+## Detta är en sida om oss
 
-Some **bold** and some _italic_ text!
+Detta är **coolt** så asså _wow_!
 
 `Some code like <h1>heading</h1> and stuff` 
 
-### The third largest heading
+### En rubrik typ

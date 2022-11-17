@@ -4,8 +4,8 @@ const fs = require("fs");
 const md2json = require("md-2-json");
 
 //*Not needed for the new version, but might be useful later on
-const markdown = require("markdown").markdown;
-const html2json = require("html2json").html2json;
+// const markdown = require("markdown").markdown;
+// const html2json = require("html2json").html2json;
 
 //* The old version, with md2json
 router.get("/", (req, res) => {
