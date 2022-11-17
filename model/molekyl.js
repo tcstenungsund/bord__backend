@@ -10,10 +10,15 @@ const sqlQuery =
   'SELECT page_content FROM molekylverkstan WHERE page_name = "' + readId + '"';
 
 router.get("/", (req, res) => {
-  content = JSON.stringify(db.run(sqlQuery));
-  console.log(typeof content);
-  console.log(content);
-  res.status(200).send(content);
+  db.all(sqlQuery, [], (err, rows) => {
+    if (err) {
+      throw err;
+    }
+    rows.forEach((row) => {
+      console.log(row.page_content);
+    });
+  });
+  res.status(200).send(row.page_content);
 });
 
 module.exports = router;
