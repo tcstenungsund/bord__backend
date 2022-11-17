@@ -29,4 +29,3 @@ db.run(
     pageContent +
     ")"
 );
->>>>>>> 695511295a54a72c9f4ad5b39beec4f8d5d90aa0
