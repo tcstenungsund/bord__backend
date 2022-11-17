@@ -23,16 +23,17 @@ let db = new sqlite3.Database("../db/themes.db");
 
 db.run("DELETE FROM molekylverkstan");
 
-for (i = 0; i < pageArr.length - 1; i++) {
-  console.log(pageArr[i].pageName);
+for (i = 0; i < pageArr.length; i++) {
+  let pageID = i + 1;
+  let finalName = JSON.stringify(pageArr[i].pageName);
+  let finalContent = JSON.stringify(pageArr[i].pageContent);
   db.run(
     "INSERT INTO molekylverkstan (page_id, page_name, page_content) VALUES (" +
-      i +
-      1 +
+      pageID +
       ", '" +
-      pageArr[i].pageName +
+      finalName +
       "', '" +
-      pageArr[i].pageContent +
+      finalContent +
       "')"
   );
 }
