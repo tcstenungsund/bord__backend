@@ -1,2 +1,1 @@
-INSERT INTO molekylverkstan (page_name, page_content)
-VALUES ()
+SELECT page_content FROM molekylverkstan WHERE page_name = "about";

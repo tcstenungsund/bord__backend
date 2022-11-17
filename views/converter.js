@@ -1,10 +1,10 @@
 const fs = require("fs");
-const explorer = fs.readdirSync("../pages/markdown");
+const explorer = fs.readdirSync("../pages/db_content");
 const md2json = require("md-2-json");
 const pageArr = [explorer.length];
 
 function mdfinder() {
-  const folder = "../pages/markdown/";
+  const folder = "../pages/db_content/";
   for (const file in explorer) {
     const content = fs.readFileSync(folder + explorer[file], "utf8");
     const website = md2json.parse(content);
@@ -25,8 +25,12 @@ db.run("DELETE FROM molekylverkstan");
 
 for (i = 0; i < pageArr.length; i++) {
   let pageID = i + 1;
-  let finalName = JSON.stringify(pageArr[i].pageName);
-  let finalContent = JSON.stringify(pageArr[i].pageContent);
+  let finalName = JSON.stringify(pageArr[i].pageName)
+    .replace('"', "")
+    .replace('"', "");
+  let finalContent = JSON.stringify(pageArr[i].pageContent)
+    .replace('""', "")
+    .replace('"', "");
   db.run(
     "INSERT INTO molekylverkstan (page_id, page_name, page_content) VALUES (" +
       pageID +
@@ -36,4 +40,6 @@ for (i = 0; i < pageArr.length; i++) {
       finalContent +
       "')"
   );
+
+  console.log(finalName);
 }
