@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 const PORT = 8080;
+const fs = require("fs");
+const explorer = fs.readdirSync("./");
+const md2json = require("md-2-json");
+const pageArr = [explorer.length];
 
 app.listen(PORT, () => console.log(`It's alive on http://localhost:${PORT}`));
 
@@ -15,6 +19,10 @@ const airRouter = require("./routes/air.js");
 const fruitRouter = require("./routes/fruit.js");
 const json2mdRouter = require("./routes/md2json_page.js");
 const molekylRouter = require("../model/molekyl.js");
+
+//* Imports the converter
+import { logger } from "../views/converter.js";
+logger();
 
 // * This defines what URI is used for what route
 app.use("/air", airRouter);
