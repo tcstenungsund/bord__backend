@@ -12,10 +12,7 @@ export function mdfinder() {
       pageContent: website,
     };
   }
-
-  //! Lägg varje file i variabel, converta variabeln
 }
-mdfinder();
 
 export function converter() {
   const sqlite3 = require("sqlite3").verbose();
@@ -41,6 +38,9 @@ export function converter() {
     );
   }
 }
+
+// mdfinder();
+// converter();
 
 export function logger() {
   console.log("HEJSAN");

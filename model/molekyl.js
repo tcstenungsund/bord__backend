@@ -2,7 +2,7 @@ const express = require("Express");
 const router = express.Router();
 const sqlite3 = require("sqlite3").verbose();
 
-//! Här har vi problemet att en absolut path krävs, prova runt lite gärna
+//! @BensinBosse här har vi problemet att en absolut path krävs, prova runt lite gärna
 const db = new sqlite3.Database(
   "C:/Users/pontu/Documents/Skola/bord__backend/db/themes.db"
 );

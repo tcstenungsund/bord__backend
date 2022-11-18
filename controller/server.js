@@ -21,8 +21,8 @@ const json2mdRouter = require("./routes/md2json_page.js");
 const molekylRouter = require("../model/molekyl.js");
 
 //* Imports the converter
-import { logger } from "../views/converter.js";
-logger();
+// import { logger } from "../views/converter.js";
+// logger();
 
 // * This defines what URI is used for what route
 app.use("/air", airRouter);
