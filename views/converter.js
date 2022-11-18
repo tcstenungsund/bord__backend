@@ -12,6 +12,7 @@ function mdfinder() {
       pageName: explorer[file].replace(".md", ""),
       pageContent: website,
     };
+    console.log(website);
   }
 
   //! Lägg varje file i variabel, converta variabeln
@@ -39,5 +40,7 @@ for (i = 0; i < pageArr.length; i++) {
       "')"
   );
 
-  console.log(finalName);
+  console.log("");
+  console.log("");
+  console.log(finalContent);
 }
