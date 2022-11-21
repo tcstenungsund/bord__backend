@@ -1,7 +1,7 @@
+import fs from "fs";
+import md2json from "md2json";
 export function mdfinder() {
-  const fs = require("fs");
   const explorer = fs.readdirSync("./");
-  const md2json = require("md-2-json");
   const pageArr = [explorer.length];
   const folder = "./";
   for (const file in explorer) {

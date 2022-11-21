@@ -1,10 +1,10 @@
-const express = require("Express");
+import express from "express";
+import sqlite3 from "sqlite3";
 const router = express.Router();
-const sqlite3 = require("sqlite3").verbose();
 
 //! @BensinBosse här har vi problemet att en absolut path krävs, prova runt lite gärna
 const db = new sqlite3.Database(
-  "C:/Users/pontu/Documents/Skola/bord__backend/db/themes.db"
+  "C:/Users/03pool09/Documents/skola/bord__backend/db/themes.db"
 );
 const readId = "about";
 const sqlQuery =
@@ -23,4 +23,4 @@ router.get("/", (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

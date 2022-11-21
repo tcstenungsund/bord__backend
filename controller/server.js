@@ -1,10 +1,7 @@
-const express = require("express");
+import express from "express";
+import molekylRouter from "../model/molekyl.js";
 const app = express();
 const PORT = 8080;
-const fs = require("fs");
-const explorer = fs.readdirSync("./");
-const md2json = require("md-2-json");
-const pageArr = [explorer.length];
 
 app.listen(PORT, () => console.log(`It's alive on http://localhost:${PORT}`));
 
@@ -15,19 +12,18 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 //* These are the routers in use, who in turn refer to the .js files in "routes"
-const airRouter = require("./routes/air.js");
-const fruitRouter = require("./routes/fruit.js");
-const json2mdRouter = require("./routes/md2json_page.js");
-const molekylRouter = require("../model/molekyl.js");
+// import airRouter from "./routes/air.js";
+// import fruitRouter from "./routes/fruit.js";
+// import json2mdRouter from "./routes/md2json_page.js";
 
 //* Imports the converter
 // import { logger } from "../views/converter.js";
 // logger();
 
 // * This defines what URI is used for what route
-app.use("/air", airRouter);
-app.use("/fruit", fruitRouter);
-app.use("/json", json2mdRouter);
+// app.use("/air", airRouter);
+// app.use("/fruit", fruitRouter);
+// app.use("/json", json2mdRouter);
 app.use("/molekylverkstan", molekylRouter);
 
 //* The following might come in handy later on
