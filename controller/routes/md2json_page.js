@@ -1,7 +1,7 @@
-// import express from "express";
+import express from "express";
 // import fs from "fs";
 // import md2json from "md2json";
-// const router = express.Router();
+const router = express.Router();
 
 // //*Not needed for the new version, but might be useful later on
 // // const markdown = require("markdown").markdown;
@@ -27,4 +27,4 @@
 // //   res.status(200).json(jsonContent);
 // // });
 
-// module.exports = router;
+export default router;

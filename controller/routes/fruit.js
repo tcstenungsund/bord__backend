@@ -14,4 +14,4 @@ router.get("/orange", (req, res) => {
   res.status(200).render("fruit/orange");
 });
 
-module.exports = router;
+export default router;

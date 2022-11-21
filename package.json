@@ -2,7 +2,7 @@
   "name": "api",
   "type": "module",
   "scripts": {
-    "start": "nodemon controller/server.js"
+    "start": "nodemon controller/controller.js"
   },
   "dependencies": {
     "ejs": "^3.1.8",

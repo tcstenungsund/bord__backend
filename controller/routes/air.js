@@ -14,4 +14,4 @@ router.get("/uf", (req, res) => {
   res.status(200).render("air/uf");
 });
 
-module.exports = router;
+export default router;
