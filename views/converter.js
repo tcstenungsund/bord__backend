@@ -42,9 +42,6 @@ export function converter() {
   console.log("Convertern är körd");
 }
 
-// mdfinder();
-// converter();
-
 export function logger() {
   console.log("HEJSAN");
 }
