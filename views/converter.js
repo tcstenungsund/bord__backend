@@ -1,5 +1,6 @@
 import fs from "fs";
-import md2json from "md2json";
+import md2json from "md-2-json";
+
 export function mdfinder() {
   const explorer = fs.readdirSync("./");
   const pageArr = [explorer.length];
@@ -12,6 +13,7 @@ export function mdfinder() {
       pageContent: website,
     };
   }
+  console.log("Findern är körd");
 }
 
 export function converter() {
@@ -37,6 +39,7 @@ export function converter() {
         "')"
     );
   }
+  console.log("Convertern är körd");
 }
 
 // mdfinder();
