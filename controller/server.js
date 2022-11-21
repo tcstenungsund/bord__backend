@@ -1,5 +1,11 @@
 import express from "express";
 import molekylRouter from "../model/molekyl.js";
+//* Imports the converter
+import { logger, mdfinder, converter } from "../views/converter.js";
+logger();
+mdfinder();
+converter();
+
 const app = express();
 const PORT = 8080;
 
@@ -15,10 +21,6 @@ app.set("view engine", "ejs");
 // import airRouter from "./routes/air.js";
 // import fruitRouter from "./routes/fruit.js";
 // import json2mdRouter from "./routes/md2json_page.js";
-
-//* Imports the converter
-// import { logger } from "../views/converter.js";
-// logger();
 
 // * This defines what URI is used for what route
 // app.use("/air", airRouter);
