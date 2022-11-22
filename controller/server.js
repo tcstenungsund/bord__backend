@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.static("start"));
 app.use(express.urlencoded({ extended: true }));
 
-app.set("view engine", "ejs");
+//app.set("view engine", "ejs");
 
 //* These are the routers in use, who in turn refer to the .js files in "routes"
 import airRouter from "./routes/air.js";
