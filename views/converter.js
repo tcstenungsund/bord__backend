@@ -35,11 +35,11 @@ export function converter() {
       pageArr[i].pageName.length + 1
     );
     let finalContent = JSON.stringify(pageArr[i].pageContent);
-    const query = `UPDATE or IGNORE molekylverkstan SET page_id = ${pageID}, page_name = '${finalName}', page_content = '${finalContent}'`;
-    //   `INSERT INTO molekylverkstan (page_id, page_name, page_content)
-    // VALUES('${pageID}', '${finalName}', '${finalContent}')`;
+    const query = `UPDATE or IGNORE molekylverkstan SET
+      page_id = ${pageID}, page_name = '${finalName}', page_content = '${finalContent}'`;
 
-    // `UPDATE molekylverkstan SET page_id = :pageID, page_name = :pageName, page_content = :pageContent`
+    // `UPDATE or IGNORE molekylverkstan SET page_id = :pageID, page_name = :pageName, page_content = :pageContent
+    // :page_id = ${pageID}, :page_name = '${finalName}', :page_content = '${finalContent}'`;
 
     db.run(query);
   }

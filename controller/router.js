@@ -1,11 +1,10 @@
 import express from "express";
-// import getPageContent from "C:/Users/pontu/Documents/Skola/bord__backend/model/model.js";
-// import getPageContent from "../model/model.js";
+//import getPageContent from "C:/Users/pontu/Documents/Skola/bord__backend/model/model.js";
+import getPageContent from "../model/model.js";
 const router = express.Router();
 
-//* Sends put the HTML on "localhost:8080"
+//* Sends out the ejs (basically HTML) on start URL "localhost:8080" (will be different on public server, like "www.bord.se")
 router.get("/", function (req, res) {
-  //res.send("<h1>This is the home page!</h1>");
   res.render("../pages/start.ejs");
 });
 
