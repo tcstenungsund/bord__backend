@@ -9,21 +9,15 @@ router.get("/", function (req, res) {
   res.render("../pages/start.ejs");
 });
 
-function idSlicer(input) {
-  let output = JSON.stringify(input);
-  output = output.slice(1, output.length - 1);
-  return output;
-}
-
 export let sqlQuery;
 // //* Querys the database, the table ":id"
 router.get("/:id", function (req, res) {
   const id = req.params.id;
-  const customerID = idSlicer(id);
-  sqlQuery = `SELECT page_content FROM ${customerID} WHERE page_name = "about";`;
-  console.log(sqlQuery);
+  console.log("🚀 ~ id", id);
+  sqlQuery = `SELECT page_content FROM ${id} WHERE page_name = "about";`;
+  console.log("🚀 ~ sqlQuery", sqlQuery);
   //console.log(getPageContent);
-  res.send(customerID);
+  res.send(id);
   // res.send(getPageContent);
 });
 

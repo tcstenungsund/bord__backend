@@ -42,7 +42,6 @@ export function converter() {
     // `UPDATE molekylverkstan SET page_id = :pageID, page_name = :pageName, page_content = :pageContent`
 
     db.run(query);
-    console.log(query + "\n \n \n");
   }
   console.log("Convertern är körd");
 }
