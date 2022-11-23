@@ -1,5 +1,5 @@
 import express from "express";
-import * as getPageContent from "../model/model.js";
+import getPageContent from "../model/model.js";
 
 const router = express.Router();
 
@@ -15,11 +15,12 @@ router.get("/:id", function (req, res, next) {
   console.log("id:", id);
   console.log("Req url:", req.url);
   sqlQuery = `SELECT page_content FROM ${id} WHERE page_name = "about";`;
-  if (!getPageContent) {
+  let content = getPageContent();
+  if (content == 404) {
     res.status(404).render("../pages/404.ejs");
   } else {
-    console.log("🚀 ~ getPageContent", getPageContent);
-    res.status(200).send(getPageContent);
+    console.log("🚀 ~ content", content);
+    res.status(200).send(content);
   }
   console.log("");
   next();
