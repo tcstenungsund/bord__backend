@@ -5,16 +5,22 @@ const db = new sqlite3.Database(
   "C:/Users/pontu/Documents/Skola/bord__backend/db/themes.db"
 );
 
-import { sqlQuery } from "../controller/router";
-export function getPageContent() {
-  let printedContent;
+import { sqlQuery } from "../controller/router.js";
+export default function getPageContent() {
+  console.log("query: " + sqlQuery);
   db.all(sqlQuery, [], (err, rows) => {
     if (err) {
-      throw err;
+      //throw err;
+      console.log("Nu gick något snett i databasen");
+      return 404;
+    } else {
+      rows.forEach((row) => {
+        // console.log(row.page_content);
+        let content = row.page_content;
+        console.log("🚀 ~ rows.forEach ~ content", content);
+        //return content;
+      });
+      //console.log(getPageContent());
     }
-    rows.forEach((row) => {
-      printedContent = JSON.parse(row.page_content);
-      return printedContent;
-    });
   });
 }

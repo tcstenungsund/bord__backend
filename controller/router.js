@@ -1,6 +1,6 @@
 import express from "express";
-//import getPageContent from "C:/Users/pontu/Documents/Skola/bord__backend/model/model.js";
-import getPageContent from "../model/model.js";
+import * as getPageContent from "../model/model.js";
+
 const router = express.Router();
 
 //* Sends out the ejs (basically HTML) on start URL "localhost:8080" (will be different on public server, like "www.bord.se")
@@ -9,15 +9,20 @@ router.get("/", function (req, res) {
 });
 
 export let sqlQuery;
-// //* Querys the database, the table ":id"
-router.get("/:id", function (req, res) {
+//* Querys the database, the table ":id"
+router.get("/:id", function (req, res, next) {
   const id = req.params.id;
-  console.log("🚀 ~ id", id);
+  console.log("id:", id);
+  console.log("Req url:", req.url);
   sqlQuery = `SELECT page_content FROM ${id} WHERE page_name = "about";`;
-  console.log("🚀 ~ sqlQuery", sqlQuery);
-  //console.log(getPageContent);
-  res.send(id);
-  // res.send(getPageContent);
+  if (!getPageContent) {
+    res.status(404).render("../pages/404.ejs");
+  } else {
+    console.log("🚀 ~ getPageContent", getPageContent);
+    res.status(200).send(getPageContent);
+  }
+  console.log("");
+  next();
 });
 
 export default router;
