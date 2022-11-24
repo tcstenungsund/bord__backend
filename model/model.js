@@ -1,26 +1,27 @@
 import sqlite3 from "sqlite3";
 
-//! @BensinBosse här har vi problemet att en absolut path krävs, prova runt lite gärna
 const db = new sqlite3.Database(
   "C:/Users/pontu/Documents/Skola/bord__backend/db/themes.db"
 );
 
-import { sqlQuery } from "../controller/router.js";
-export default function getPageContent() {
-  console.log("query: " + sqlQuery);
+var content;
+function getPageContent(sqlQuery) {
   db.all(sqlQuery, [], (err, rows) => {
     if (err) {
-      //throw err;
-      console.log("Nu gick något snett i databasen");
-      return 404;
-    } else {
-      rows.forEach((row) => {
-        // console.log(row.page_content);
-        let content = row.page_content;
-        console.log("🚀 ~ rows.forEach ~ content", content);
-        //return content;
-      });
-      //console.log(getPageContent());
+      console.log("Something went wrong in the db");
     }
+    // else {
+    rows.forEach((row) => {
+      content = row.page_content;
+      console.log(content);
+      return content;
+    });
   });
 }
+
+getPageContent(`SELECT page_content FROM fruit WHERE page_name = "apples";`);
+console.log(content);
+
+// console.log(content);
+
+// getPageContent(`SELECT page_content FROM fruit WHERE page_name = "apples";`);
