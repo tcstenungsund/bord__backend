@@ -1,4 +1,4 @@
-# About us, molekylverkstan
+# About Molekylverkstan, which is us, which is Molekylverkstan
 
 ## This is a page about us
 

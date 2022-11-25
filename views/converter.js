@@ -2,13 +2,16 @@ import fs from "fs";
 import md2json from "md-2-json";
 import sqlite3 from "sqlite3";
 
-const explorer = fs.readdirSync(
-  "C:/Users/pontu/Documents/Skola/bord__backend/markdown"
+let db = new sqlite3.Database(
+  "C:/Users/pontu/Documents/Skola/bord__backend/db/themes.db"
 );
-const pageArr = [explorer.length];
-const folder = "C:/Users/pontu/Documents/Skola/bord__backend/markdown/";
+export function converter() {
+  const explorer = fs.readdirSync(
+    "C:/Users/pontu/Documents/Skola/bord__backend/markdown"
+  );
+  const pageArr = [explorer.length];
+  const folder = "C:/Users/pontu/Documents/Skola/bord__backend/markdown/";
 
-export function mdfinder() {
   for (const file in explorer) {
     const content = fs.readFileSync(folder + explorer[file], "utf8");
     const website = md2json.parse(content);
@@ -18,14 +21,6 @@ export function mdfinder() {
     };
   }
   console.log("Findern är körd");
-}
-
-export function converter() {
-  let db = new sqlite3.Database(
-    "C:/Users/pontu/Documents/Skola/bord__backend/db/themes.db"
-  );
-
-  //db.run("DELETE FROM molekylverkstan");
 
   let i;
   for (i = 0; i < pageArr.length; i++) {
@@ -38,17 +33,7 @@ export function converter() {
     const query = `UPDATE or IGNORE molekylverkstan SET
       page_id = ${pageID}, page_name = '${finalName}', page_content = '${finalContent}'`;
 
-    // `UPDATE or IGNORE molekylverkstan SET page_id = :pageID, page_name = :pageName, page_content = :pageContent
-    // :page_id = ${pageID}, :page_name = '${finalName}', :page_content = '${finalContent}'`;
-
     db.run(query);
   }
   console.log("Convertern är körd");
 }
-
-export function logger() {
-  console.log("HEJSAN");
-}
-
-mdfinder();
-converter();
