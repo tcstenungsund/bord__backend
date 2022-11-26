@@ -1,1 +1,0 @@
-KYCKLING-KO
