@@ -1,6 +1,6 @@
 # bord__backend
 
-This is the backend part of Project Bord, which mostly contains the work of **@pontusolsson03**, with a bit of help from **@BensinBosse ** and some guidance from **@seetee**.
+This is the backend part of Project Bord, which mostly contains the work of **@pontusolsson03**, with a bit of help from **@BensinBosse** and some guidance from **@seetee**.
 
 
 ## Here´s basically how the API works
