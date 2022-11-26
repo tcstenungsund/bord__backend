@@ -8,9 +8,6 @@ app.use(express.static("start"));
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
-//* Imports the converter
-//import { logger, converter } from "../views/converter.js";
-
 //* These are the routers in use, who in turn refer to the .js files in "routes"
 import router from "../controller/router.js";
 
