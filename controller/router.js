@@ -1,6 +1,6 @@
 import express from "express";
 import { fetchContent } from "../model/model.js";
-import { converter } from "../views/converter.js";
+// import { converter } from "../views/converter.js";
 
 const router = express.Router();
 
@@ -11,25 +11,25 @@ router.get("/", function (req, res) {
 });
 
 //* Querys the database, the table ":id"
-router.get("/:customerId", async function (req, res, next) {
-  let customerId = req.params.customerId;
-  let sqlQuery = `SELECT page_content FROM ${customerId} WHERE page_name = "about";`;
+router.get("/:userId", async function (req, res, next) {
+  let userId = req.params.userId;
+  let sqlQuery = `SELECT page_content FROM ${userId} WHERE page_name = "about";`;
   const content = await fetchContent(sqlQuery);
   if (content == "404") {
-    res.status(404).render("../pages/404.ejs");
+    res.status(404).render("../pages/no_user.ejs");
   } else {
     res.status(200).send(JSON.parse(content));
   }
   next();
 });
 
-router.get("/:customerId/:pageId", async function (req, res, next) {
-  let customerId = req.params.customerId;
+router.get("/:userId/:pageId", async function (req, res, next) {
+  let userId = req.params.userId;
   let pageId = req.params.pageId;
-  let sqlQuery = `SELECT page_content FROM ${customerId} WHERE page_name = "${pageId}";`;
+  let sqlQuery = `SELECT page_content FROM ${userId} WHERE page_name = "${pageId}";`;
   const content = await fetchContent(sqlQuery);
   if (content == "404") {
-    res.status(404).render("../pages/404.ejs");
+    res.status(404).render("../pages/no_page.ejs");
   } else {
     res.status(200).send(JSON.parse(content));
   }
