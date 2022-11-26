@@ -2,7 +2,8 @@
   "name": "api",
   "type": "module",
   "scripts": {
-    "start": "nodemon controller/controller.js"
+    "start": "node controller/controller.js",
+    "dev": "nodemon controller/controller.js"
   },
   "dependencies": {
     "async": "^3.2.4",
