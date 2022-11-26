@@ -7,8 +7,7 @@ const db = new sqlite3.Database(
 export function fetchContent(sqlQuery) {
   return new Promise((resolve) => {
     db.all(sqlQuery, [], (err, rows) => {
-      if (err) {
-        console.error(err);
+      if (err || rows.length === 0) {
         resolve("404");
       } else {
         rows.forEach((row) => {
