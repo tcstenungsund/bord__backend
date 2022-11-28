@@ -3,7 +3,12 @@ import md2json from "md-2-json";
 import sqlite3 from "sqlite3";
 import fetch from "node-fetch";
 
+// let db = new sqlite3.Database(
+//   "C:/Users/pontu/Documents/Skola/bord__backend/db/themes.db"
+// );
+
 let db = new sqlite3.Database(
+<<<<<<< Updated upstream
   "C:/Users/03kaso20/Documents/web/bord/bord__backend/db/themes.db"
 );
 
@@ -28,6 +33,11 @@ function getMd() {
 
 getMd();
 
+=======
+  "C:/Users/03pool09/Documents/skola/bord__backend/db/themes.db"
+);
+
+>>>>>>> Stashed changes
 export function converter() {
   const explorer = fs.readdirSync(
     "C:/Users/03kaso20/Documents/web/bord/bord__backend/markdown"
