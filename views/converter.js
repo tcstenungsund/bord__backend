@@ -8,7 +8,6 @@ import fetch from "node-fetch";
 // );
 
 let db = new sqlite3.Database(
-<<<<<<< Updated upstream
   "C:/Users/03kaso20/Documents/web/bord/bord__backend/db/themes.db"
 );
 
@@ -33,11 +32,6 @@ function getMd() {
 
 getMd();
 
-=======
-  "C:/Users/03pool09/Documents/skola/bord__backend/db/themes.db"
-);
-
->>>>>>> Stashed changes
 export function converter() {
   const explorer = fs.readdirSync(
     "C:/Users/03kaso20/Documents/web/bord/bord__backend/markdown"
