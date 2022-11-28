@@ -1,16 +1,39 @@
 import fs from "fs";
 import md2json from "md-2-json";
 import sqlite3 from "sqlite3";
+import fetch from "node-fetch";
 
 let db = new sqlite3.Database(
-  "C:/Users/pontu/Documents/Skola/bord__backend/db/themes.db"
+  "C:/Users/03kaso20/Documents/web/bord/bord__backend/db/themes.db"
 );
+
+const getFile = async () => {
+  try {
+    const response = await fetch(
+      "https://raw.githubusercontent.com/tcstenungsund/schedule/main/md/weuweb33-22te4i.md"
+    );
+    const data = await response.text();
+    return data;
+  } catch (err) {
+    console.log("fetch error", err);
+  }
+};
+
+function getMd() {
+  (async () => {
+    const getData = await getFile();
+    console.log("data", getData);
+  })();
+}
+
+getMd();
+
 export function converter() {
   const explorer = fs.readdirSync(
-    "C:/Users/pontu/Documents/Skola/bord__backend/markdown"
+    "C:/Users/03kaso20/Documents/web/bord/bord__backend/markdown"
   );
   const pageArr = [explorer.length];
-  const folder = "C:/Users/pontu/Documents/Skola/bord__backend/markdown/";
+  const folder = "C:/Users/03kaso20/Documents/web/bord/bord__backend/markdown";
 
   for (const file in explorer) {
     const content = fs.readFileSync(folder + explorer[file], "utf8");
