@@ -4,7 +4,7 @@ import { fetchContent } from "../model/model.js";
 
 const router = express.Router();
 
-//* Sends out the ejs (basically HTML) on start URL "localhost:8080" (will be different on public server, like "www.bord.se")
+//* Sends out the ejs (basically HTML) on start URL "localhost:8080"
 router.get("/", function (req, res) {
   //converter();
   res.render("../pages/start.ejs");
