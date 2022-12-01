@@ -46,7 +46,7 @@
       <h2>Enter user code:</h2>
       <form>
         <input type="text" placeholder="User Code" id="inputBox" />
-        <input type="reset" value="Send" id="sendBtn" onclick="login()" />
+        <input type="submit" value="Send" id="sendBtn" onclick="login()" />
       </form>
     </main>
     <script>
@@ -54,7 +54,8 @@
       function login() {
         let button = document.getElementById("sendBtn");
         let inputValue = document.getElementById("inputBox").value;
-        window.location.href = inputValue;
+        window.location.assign(inputValue);
+        return false;
       }
     </script>
   </body>
