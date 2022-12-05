@@ -4,7 +4,6 @@ const PORT = 8080;
 app.listen(PORT, () => console.log(`It's alive on http://localhost:${PORT}`));
 
 app.use(express.json());
-app.use(cors({ origin: "http://127.0.0.1:8080/", credentials: true }));
 app.use(express.static("start"));
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
