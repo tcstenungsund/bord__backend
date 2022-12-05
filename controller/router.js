@@ -4,16 +4,6 @@ import { fetchContent } from "../model/model.js";
 
 const router = express.Router();
 
-// router.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "https://pontusolsson03.github.io");
-//   res.header("Access-Control-Allow-Methods", "GET");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
-
 //* Sends out the ejs (basically HTML) on start URL "localhost:8080"
 router.get("/", function (req, res) {
   //converter();
