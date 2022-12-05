@@ -5,7 +5,7 @@ import { fetchContent } from "../model/model.js";
 const router = express.Router();
 
 router.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin");
+  res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8080/");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
