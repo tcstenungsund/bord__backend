@@ -15,9 +15,9 @@ router.get("/:userId", async function (req, res, next) {
   let userId = req.params.userId;
   const explorer = fs.readdirSync(`./html/${userId}`);
   const folder = `./html/${userId}/`;
-  // if (userId !== "favicon.ico") {
-  //   updater(explorer, folder, userId);
-  // }
+  if (userId !== "favicon.ico") {
+    updater(explorer, folder, userId);
+  }
   let fetchQuery = `SELECT page_content FROM ${userId} WHERE page_name = "about";`;
   const content = await fetchContent(fetchQuery);
   if (content == "404") {
