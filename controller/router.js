@@ -13,19 +13,22 @@ router.get("/", function (req, res) {
 //* Querys the database, the table ":id"
 router.get("/:userId", async function (req, res, next) {
   let userId = req.params.userId;
-  const explorer = fs.readdirSync(`./html/${userId}`);
-  const folder = `./html/${userId}/`;
-  let fetchQuery = `SELECT page_content FROM ${userId} WHERE page_name = "about";`;
-  const content = await fetchContent(fetchQuery);
-  if (content == "404") {
-    res.status(404).render("../pages/no_user.ejs");
-  } else {
-    res.status(200).send(JSON.parse(content));
+  if (userId !== "favicon.ico") {
+    //* Fetches data from db
+    let fetchQuery = `SELECT page_content FROM ${userId} WHERE page_name = "about";`;
+    const content = await fetchContent(fetchQuery);
+    if (content == "404") {
+      res.status(404).render("../pages/no_user.ejs");
+    } else {
+      //* Response
+      res.status(200).send(JSON.parse(content));
+
+      //* Updater
+      const explorer = fs.readdirSync(`./html/${userId}`);
+      const folder = `./html/${userId}/`;
+      updater(explorer, folder, userId);
+    }
   }
-  //* Updater being called
-  // if (userId !== "favicon.ico") {
-  //   updater(explorer, folder, userId);
-  // }
   next();
 });
 
