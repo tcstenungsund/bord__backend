@@ -23,9 +23,9 @@ router.get("/:userId", async function (req, res, next) {
     res.status(200).send(JSON.parse(content));
   }
   //* Updater being called
-  if (userId !== "favicon.ico") {
-    updater(explorer, folder, userId);
-  }
+  // if (userId !== "favicon.ico") {
+  //   updater(explorer, folder, userId);
+  // }
   next();
 });
 
