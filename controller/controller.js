@@ -9,10 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 app.use(function (req, res, next) {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://pontusolsson03.github.io/bord__frontend_pontus/"
-  );
+  res.header("Access-Control-Allow-Origin", "https://pontusolsson03.github.io");
   res.header("Access-Control-Allow-Methods", "GET");
   res.header(
     "Access-Control-Allow-Headers",
