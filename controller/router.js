@@ -1,7 +1,7 @@
 import express from "express";
 import fs from "fs";
 import { fetchContent } from "../model/model.js";
-import { converter } from "../views/converter.js";
+import { updater } from "../views/updater.js";
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ router.get("/:userId", async function (req, res, next) {
   const explorer = fs.readdirSync(`./html/${userId}`);
   const folder = `./html/${userId}/`;
   // if (userId !== "favicon.ico") {
-  //   converter(explorer, folder, userId);
+  //   updater(explorer, folder, userId);
   // }
   let fetchQuery = `SELECT page_content FROM ${userId} WHERE page_name = "about";`;
   const content = await fetchContent(fetchQuery);

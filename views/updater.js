@@ -3,7 +3,7 @@ import sqlite3 from "sqlite3";
 
 const db = new sqlite3.Database("./db/themes.db");
 
-export function converter(explorer, folder, user) {
+export function updater(explorer, folder, user) {
   const pageArr = [explorer.length];
 
   for (const file in explorer) {
@@ -29,5 +29,5 @@ export function converter(explorer, folder, user) {
 
     db.run(query);
   }
-  console.log("Convertern är körd");
+  console.log("Updatern är körd");
 }
