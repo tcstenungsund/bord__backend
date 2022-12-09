@@ -6,6 +6,7 @@ export function fetchContent(sqlQuery) {
   return new Promise((resolve) => {
     db.all(sqlQuery, [], (err, rows) => {
       if (err || rows.length === 0) {
+        console.log(sqlQuery);
         resolve("404");
       } else {
         rows.forEach((row) => {
