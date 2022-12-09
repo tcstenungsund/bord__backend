@@ -20,7 +20,6 @@ router.get("/:userId", async function (req, res) {
     if (content == "404") {
       res.status(404).render("../pages/no_user.ejs");
     } else {
-      //* Response
       res.status(200).send(JSON.parse(content));
     }
   }
