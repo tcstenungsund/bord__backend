@@ -15,6 +15,7 @@
     "node-fetch": "^3.3.0",
     "node.js": "^0.0.1-security",
     "nodemon": "^2.0.20",
+    "octokit": "^2.0.10",
     "sqlite3": "^5.1.2"
   },
   "devDependencies": {
