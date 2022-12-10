@@ -16,3 +16,7 @@ export function fetchContent(sqlQuery) {
     });
   });
 }
+
+export function putCard(sqlQuery) {
+  db.run(sqlQuery);
+}

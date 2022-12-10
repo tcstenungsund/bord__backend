@@ -10,7 +10,7 @@ app.set("view engine", "ejs");
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8080");
-  res.header("Access-Control-Allow-Methods", "GET");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",
