@@ -18,5 +18,14 @@ export function fetchContent(sqlQuery) {
 }
 
 export function putCard(sqlQuery) {
-  db.run(sqlQuery);
+  return new Promise((resolve) => {
+    db.run(sqlQuery, (err) => {
+      if (err) {
+        console.log(err);
+        resolve(err);
+      } else {
+        resolve("clear");
+      }
+    });
+  });
 }

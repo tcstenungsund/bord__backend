@@ -1,4 +1,4 @@
-import express from "express";
+import express, { query } from "express";
 import fs from "fs";
 import { fetchContent } from "../model/model.js";
 import { updater } from "../views/updater.js";
@@ -39,10 +39,18 @@ router.get("/:userId/:pageId", async function (req, res) {
 });
 
 //* put-request
-router.put("/:userId", function (req, res) {
-  putCard(`UPDATE or IGNORE ${req.params.userId}
+router.put("/:userId", async function (req, res) {
+  const putResponse = await putCard(
+    `UPDATE or IGNORE ${req.params.userId}
     SET ${req.body.card_type} = "${req.body.card_id}"
-    WHERE page_name = "${req.body.page_name}"`);
+    WHERE page_name = "${req.body.page_name}"`
+  );
+  if (putResponse !== "clear") {
+    console.log(putResponse);
+    res.status(400).send("Put error");
+  } else {
+    res.status(200).send("Put successful");
+  }
 });
 
 //   //* Updater
