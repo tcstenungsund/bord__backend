@@ -1,5 +1,4 @@
 import express, { query } from "express";
-import fs from "fs";
 import { fetchContent } from "../model/model.js";
 import { updater } from "../views/updater.js";
 import { putCard } from "../model/model.js";
