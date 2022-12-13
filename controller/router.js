@@ -23,7 +23,7 @@ router.get("/:userId", async function (req, res) {
     // } else {
     //   res.status(200).send(JSON.parse(content));
     //
-    send(req.params.userId);
+    res.send(req.params.userId);
   }
 });
 
