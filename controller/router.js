@@ -13,16 +13,17 @@ router.get("/", function (req, res) {
 //* Querys the database, the table ":userId"
 router.get("/:userId", async function (req, res) {
   if (req.params.userId !== "favicon.ico") {
-    //* Fetches data from db
-    const content = await fetchContent(
-      `SELECT page_content FROM ${req.params.userId}
-      WHERE page_name = "about";`
-    );
-    if (content == "404") {
-      res.status(404).render("../pages/no_user.ejs");
-    } else {
-      res.status(200).send(JSON.parse(content));
-    }
+    // //* Fetches data from db
+    // const content = await fetchContent(
+    //   `SELECT page_content FROM ${req.params.userId}
+    //   WHERE page_name = "about";`
+    // );
+    // if (content == "404") {
+    //   res.status(404).render("../pages/no_user.ejs");
+    // } else {
+    //   res.status(200).send(JSON.parse(content));
+    //
+    send(req.params.userId);
   }
 });
 
