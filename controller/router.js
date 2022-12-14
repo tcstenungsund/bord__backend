@@ -1,7 +1,7 @@
 import express, { query } from "express";
-import { fetchContent } from "../model/model.js";
+import { getPage } from "../model/get.js";
 import { updater } from "../views/updater.js";
-import { putCard } from "../model/model.js";
+import { putCard } from "../model/put.js";
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ router.get("/", function (req, res) {
 router.get("/:userId", async function (req, res) {
   if (req.params.userId !== "favicon.ico") {
     //* Fetches data from db
-    const content = await fetchContent(
+    const content = await getPage(
       `SELECT page_content FROM ${req.params.userId}
       WHERE page_name = "about";`
     );
@@ -22,15 +22,13 @@ router.get("/:userId", async function (req, res) {
       res.status(404).render("../pages/no_user.ejs");
     } else {
       res.status(200).send(JSON.parse(content));
-
-      // res.send(req.params.userId);
     }
   }
 });
 
 //* Querys the database, the table ":userId" and row ":pageID"
 router.get("/:userId/:pageId", async function (req, res) {
-  const content = await fetchContent(
+  const content = await getPage(
     `SELECT page_content FROM ${req.params.userId}
     WHERE page_name = "${req.params.pageId}";`
   );
