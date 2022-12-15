@@ -40,9 +40,9 @@ router.get("/:userId/:pageId", async function (req, res) {
 });
 
 //* put-request
-router.put("/:userId", async function (req, res) {
+router.put("/", async function (req, res) {
   const putResponse = await putCard(
-    `UPDATE or IGNORE ${req.params.userId}
+    `UPDATE or IGNORE ${req.body.user}
     SET ${req.body.card_type} = "${req.body.card_id}"
     WHERE page_name = "${req.body.page_name}"`
   );
