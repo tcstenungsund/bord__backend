@@ -1,6 +1,8 @@
 import express from "express";
 import { fetch } from "../model/fetch.js";
 import { updateUser } from "../views/md_fetch.js";
+import { pushCard } from "../model/push_card";
+import { pushHtml } from "../model/push_html";
 
 const router = express.Router();
 
@@ -40,7 +42,7 @@ router.get("/:userId/:pageId", async function (req, res) {
 
 //* put-request, modifies data in the database
 router.put("/card", async function (req, res) {
-  const putResponse = await push(
+  const putResponse = await pushCard(
     `UPDATE or IGNORE ${req.body.user}
     SET ${req.body.card_type} = "${req.body.card_id}"
     WHERE page_name = "${req.body.page_name}"`
@@ -55,7 +57,7 @@ router.put("/card", async function (req, res) {
 
 router.put("/refresh", async function (req, res) {
   // const refreshResponse = await updateUser(req.body.user, "md")
-  const refreshResponse = await updateUser("md_test", "about.md");
+  const refreshResponse = await pushHtml("md_test", "about.md");
   if (refreshResponse !== "clear") {
     console.log(fetchResponse);
     res.status(400).send("Refresh error");
