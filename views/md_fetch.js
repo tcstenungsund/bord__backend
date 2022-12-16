@@ -1,7 +1,6 @@
 import fetch from "node-fetch";
 // import { repositories } from "./repos.js";
 import axios from "axios";
-// import { push } from "../model/push.js";
 
 export async function updateUser(repo, file) {
   return new Promise(async (resolve) => {

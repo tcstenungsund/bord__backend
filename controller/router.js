@@ -1,8 +1,8 @@
 import express from "express";
 import { fetch } from "../model/fetch.js";
-import { updateUser } from "../views/md_fetch.js";
 import { pushCard } from "../model/push_card";
 import { pushHtml } from "../model/push_html";
+
 
 const router = express.Router();
 
