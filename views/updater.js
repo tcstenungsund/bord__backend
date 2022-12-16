@@ -83,10 +83,14 @@ export function updater(explorer, folder, user) {
     );
     let finalContent = JSON.stringify(pageArr[i].pageContent);
 
-    const query = `UPDATE or IGNORE ${user} SET
-      page_id = ${pageID}, page_name = '${finalName}', page_content = '${finalContent}'`;
+    const query = `UPDATE or IGNORE $user SET
+      page_id = $pageID, page_name = '$finalName', page_content = '$finalContent'`;
 
-    db.run(query);
+    db.run(query, {
+      $pageID: pageID,
+      $finalName: finalName,
+      $finalContent: finalContent,
+    });
   }
   console.log("Updatern är körd");
 }
