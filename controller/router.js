@@ -1,4 +1,4 @@
-import express, { query } from "express";
+import express from "express";
 import { getPage } from "../model/get.js";
 import { updater } from "../views/updater.js";
 import { putCard } from "../model/put.js";
@@ -39,7 +39,7 @@ router.get("/:userId/:pageId", async function (req, res) {
   }
 });
 
-//* put-request
+//* put-request, modifies data in the database
 router.put("/", async function (req, res) {
   const putResponse = await putCard(
     `UPDATE or IGNORE ${req.body.user}
