@@ -2,7 +2,7 @@ import sqlite3 from "sqlite3";
 
 const db = new sqlite3.Database("./db/themes.db");
 
-export function getPage(sqlQuery) {
+export function fetch(sqlQuery) {
   return new Promise((resolve) => {
     db.all(sqlQuery, [], (err, rows) => {
       if (err || rows.length === 0) {

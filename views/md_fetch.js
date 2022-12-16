@@ -1,9 +1,7 @@
-import sqlite3 from "sqlite3";
 import fetch from "node-fetch";
 import { repositories } from "./repos.js";
 import axios from "axios";
-
-const db = new sqlite3.Database("../db/themes.db");
+import { push } from "../model/push.js";
 
 const testVar = "md_test";
 const testVar2 = "about.md";
@@ -59,8 +57,6 @@ async function md2html() {
     });
 }
 
-md2html();
+//! Here a query variable needs to be made, and ran in the "push"-function
 
-// const query = `UPDATE or IGNORE $user SET
-//       page_id = ${pageID}, page_name = '{$pageName}', page_content = '${pageContent}'`;
-// db.run(query);
+md2html();
