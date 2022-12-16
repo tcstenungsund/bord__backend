@@ -1,7 +1,6 @@
 import express from "express";
 import { fetch } from "../model/fetch.js";
-import { md_fetch } from "../views/md_fetch.js";
-import { push } from "../model/push.js";
+import { updateUser } from "../views/md_fetch.js";
 
 const router = express.Router();
 
@@ -55,12 +54,8 @@ router.put("/card", async function (req, res) {
 });
 
 router.put("/refresh", async function (req, res) {
-  const refreshResponse = await push(
-    `UPDATE or IGNORE ${req.body.user} SET
-    page_id = ${pageId},
-    page_name = '${pageName}',
-    page_content = '${pageContent}'`
-  );
+  // const refreshResponse = await updateUser(req.body.user, "md")
+  const refreshResponse = await updateUser("md_test", "about.md");
   if (refreshResponse !== "clear") {
     console.log(fetchResponse);
     res.status(400).send("Refresh error");
