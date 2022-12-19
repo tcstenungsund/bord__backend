@@ -42,3 +42,5 @@ export async function updateUser(repo, file) {
     updateHtml(repo, file, await fetchRepo());
   }
 }
+
+console.log(await updateUser("md_test", "about.md"));
