@@ -13,3 +13,6 @@ export let repositories = [
   },
   { name: "md_test", md: ["about.md", "air.md", "about_hours.md"] },
 ];
+
+// console.log(repositories[1].name);
+// console.log(repositories[1].md[0]);
