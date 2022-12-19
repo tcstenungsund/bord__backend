@@ -1,8 +1,8 @@
 import express from "express";
-import { fetch } from "../model/fetch.js";
-import { pushCard } from "../model/push_card";
-import { pushHtml } from "../model/push_html";
-
+import { fetchDb } from "../model/fetch.js";
+import { pushCard } from "../model/push_card.js";
+import { updateUser } from "../views/md_fetch.js";
+import { repositories } from "../views/repos.js";
 
 const router = express.Router();
 
@@ -12,13 +12,10 @@ router.get("/", function (req, res) {
 });
 
 //* Querys the database, the table ":userId"
-router.get("/:userId", async function (req, res) {
-  if (req.params.userId !== "favicon.ico") {
+router.get("/:user", async function (req, res) {
+  if (req.params.user !== "favicon.ico") {
     //* Fetches data from db
-    const content = await fetch(
-      `SELECT page_content FROM ${req.params.userId}
-      WHERE page_name = "about";`
-    );
+    const content = await fetchDb(req.params.user, "about");
     if (content == "404") {
       res.status(404).render("../views/pages/no_user.ejs");
     } else {
@@ -28,11 +25,8 @@ router.get("/:userId", async function (req, res) {
 });
 
 //* Querys the database, the table ":userId" and row ":pageID"
-router.get("/:userId/:pageId", async function (req, res) {
-  const content = await fetch(
-    `SELECT page_content FROM ${req.params.userId}
-    WHERE page_name = "${req.params.pageId}";`
-  );
+router.get("/:user/:card", async function (req, res) {
+  const content = await fetchDb(req.params.user, `"${req.params.card}"`);
   if (content == "404") {
     res.status(404).render("../views/pages/no_page.ejs");
   } else {
@@ -43,9 +37,10 @@ router.get("/:userId/:pageId", async function (req, res) {
 //* put-request, modifies data in the database
 router.put("/card", async function (req, res) {
   const putResponse = await pushCard(
-    `UPDATE or IGNORE ${req.body.user}
-    SET ${req.body.card_type} = "${req.body.card_id}"
-    WHERE page_name = "${req.body.page_name}"`
+    req.body.user,
+    req.body.card_type,
+    `"${req.body.card_id}"`,
+    `"${req.body.page_name}"`
   );
   if (putResponse !== "clear") {
     console.log(putResponse);
@@ -57,7 +52,10 @@ router.put("/card", async function (req, res) {
 
 router.put("/refresh", async function (req, res) {
   // const refreshResponse = await updateUser(req.body.user, "md")
-  const refreshResponse = await pushHtml("md_test", "about.md");
+  const refreshResponse = await updateUser(
+    repositories[1].name,
+    repositories[1].md[0]
+  );
   if (refreshResponse !== "clear") {
     console.log(fetchResponse);
     res.status(400).send("Refresh error");
