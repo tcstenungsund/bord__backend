@@ -6,8 +6,8 @@ export function pushCard(user, type, card, name) {
   return new Promise((resolve) => {
     db.run(
       `UPDATE or IGNORE ${user}
-    SET ${type} = "${card}"
-    WHERE page_name = "${name}"`,
+      SET ${type} = "${card}"
+      WHERE page_name = "${name}"`,
       (err) => {
         if (err) {
           resolve(err);

@@ -6,8 +6,8 @@ export function updateHtml(user, page, content) {
   return new Promise((resolve) => {
     db.run(
       `UPDATE or IGNORE ${user}
-    SET page_content = "${content}"
-    WHERE page_name = "${page}"`,
+      SET page_content = "${content}"
+      WHERE page_name = "${page}"`,
       (err) => {
         if (err) {
           resolve(err);
@@ -23,8 +23,8 @@ export function insertHtml(user, page, content) {
   return new Promise((resolve) => {
     db.run(
       `UPDATE or IGNORE ${user}
-    SET page_content = "${content}"
-    WHERE page_name = "${page}"`,
+      SET page_content = "${content}"
+      WHERE page_name = "${page}"`,
       (err) => {
         if (err) {
           resolve(err);
