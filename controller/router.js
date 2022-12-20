@@ -15,7 +15,7 @@ router.get("/", function (req, res) {
 router.get("/:user", async function (req, res) {
   if (req.params.user !== "favicon.ico") {
     //* Fetches data from db
-    const content = await fetchDb(req.params.user, "about");
+    const content = await fetchDb(req.params.user, "", "about");
     if (content == "404") {
       res.status(404).render("../views/pages/no_user.ejs");
     } else {
@@ -26,7 +26,7 @@ router.get("/:user", async function (req, res) {
 
 //* Querys the database, the table ":userId" and row ":pageID"
 router.get("/:user/:card", async function (req, res) {
-  const content = await fetchDb(req.params.user, `"${req.params.card}"`);
+  const content = await fetchDb(req.params.user, req.params.card, "");
   if (content == "404") {
     res.status(404).render("../views/pages/no_page.ejs");
   } else {
