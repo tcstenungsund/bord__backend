@@ -22,6 +22,3 @@ export function fetchDb(user, card, page) {
     );
   });
 }
-
-// WHERE primary_card = "${card}"
-// OR secondary_card = "${card}"

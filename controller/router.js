@@ -39,8 +39,8 @@ router.put("/card", async function (req, res) {
   const putResponse = await pushCard(
     req.body.user,
     req.body.card_type,
-    `"${req.body.card_id}"`,
-    `"${req.body.page_name}"`
+    req.body.card_id,
+    req.body.page_name
   );
   if (putResponse !== "clear") {
     console.log(putResponse);
