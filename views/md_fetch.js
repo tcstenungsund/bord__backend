@@ -1,8 +1,8 @@
 import fetch from "node-fetch";
 import axios from "axios";
 import { fetchDb } from "../model/fetch.js";
-import { updateHtml } from "../model/push_html.js";
-import { insertHtml } from "../model/push_html.js";
+import { updateHtml } from "../model/push.js";
+import { insertHtml } from "../model/push.js";
 
 export async function updateUser(repo, file) {
   async function fetchRepo() {
@@ -34,11 +34,11 @@ export async function updateUser(repo, file) {
         });
     });
   }
-  console.log(await fetchRepo());
   const fetchResponse = await fetchDb(repo, file);
   if (fetchResponse == "404") {
     insertHtml(repo, file, await fetchRepo());
   } else {
     updateHtml(repo, file, await fetchRepo());
   }
+  return "success";
 }
