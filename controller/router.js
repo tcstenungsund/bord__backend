@@ -1,6 +1,6 @@
 import express from "express";
 import { fetchDb } from "../model/fetch.js";
-import { pushCard } from "../model/push_card.js";
+import { updateCard } from "../model/push.js";
 import { updateUser } from "../views/md_fetch.js";
 import { repositories } from "../views/repos.js";
 
@@ -9,6 +9,19 @@ const router = express.Router();
 //* Sends out the ejs (basically HTML) on start URL "localhost:8080"
 router.get("/", function (req, res) {
   res.render("../views/pages/start.ejs");
+});
+
+router.get("/refresh", async function (req, res) {
+  const refreshResponse = await updateUser(
+    repositories[1].name,
+    repositories[1].md[0]
+  );
+  if (refreshResponse !== "success") {
+    console.log(refreshResponse);
+    res.status(400).send("Refresh error");
+  } else {
+    res.status(200).send("Refresh successful");
+  }
 });
 
 //* Querys the database, the table ":userId"
@@ -36,7 +49,7 @@ router.get("/:user/:card", async function (req, res) {
 
 //* put-request, modifies data in the database
 router.put("/card", async function (req, res) {
-  const putResponse = await pushCard(
+  const putResponse = await updateCard(
     req.body.user,
     req.body.card_type,
     req.body.card_id,
@@ -47,20 +60,6 @@ router.put("/card", async function (req, res) {
     res.status(400).send("Put error");
   } else {
     res.status(200).send("Put successful");
-  }
-});
-
-router.put("/refresh", async function (req, res) {
-  // const refreshResponse = await updateUser(req.body.user, "md")
-  const refreshResponse = await updateUser(
-    repositories[1].name,
-    repositories[1].md[0]
-  );
-  if (refreshResponse !== "clear") {
-    console.log(fetchResponse);
-    res.status(400).send("Refresh error");
-  } else {
-    res.status(200).send("Refresh successful");
   }
 });
 
