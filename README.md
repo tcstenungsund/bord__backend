@@ -19,7 +19,7 @@ The actual connection and function for fetching data from the database is import
 
 #### Updating the contents of the database
 
-The third _main_ directory is **views**, where we find the file _md_`_`_fetch.js_. This file is responsible for fetching the HTML files from the repo their respective repo and storing them in the database. This function is at the moment of writing under reconstruction, and some whole new exiting functionality is on it´s way.
+The third _main_ directory is **views**, where we find the file _md_fetch.js_. This file is responsible for fetching the HTML files from the repo their respective repo and storing them in the database. This function is at the moment of writing under reconstruction, and some whole new exiting functionality is on it´s way.
 
 #### Video- and site tips for understanding the basics of a REST API in Node using a database, for those of you who want to continue my work :)
 
