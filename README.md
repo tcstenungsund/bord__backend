@@ -35,7 +35,7 @@ Videos:
 Sites:
 
 - https://www.sqlitetutorial.net/
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference Statements/async_function
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
 
 #### VSCode extensions I recommend for anyone working on this project (or just in general)
 
