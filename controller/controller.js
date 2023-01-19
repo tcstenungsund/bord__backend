@@ -8,7 +8,8 @@ app.use(express.static("start"));
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
-app.use(function (req, res, next) {
+//* This is basically for CORS, setting the rules for access to the API
+app.use(function (req, res) {
   // res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8080");
   res.header("Access-Control-Allow-Origin", "https://tcstenungsund.github.io");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
@@ -17,11 +18,10 @@ app.use(function (req, res, next) {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
-  next();
 });
 
-//* These are the routers in use, who in turn refer to the .js files in "routes"
+//* This is the router in use
 import router from "../controller/router.js";
 
-// * This defines what URI is used for what route
+// * This defines the base URL for the router, basically being "localhost:9090/"
 app.use("/", router);

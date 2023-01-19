@@ -6,11 +6,13 @@ import { repositories } from "../views/repos.js";
 
 const router = express.Router();
 
-//* Sends out the ejs (basically HTML) on start URL "localhost:8080"
+//* Sends out the ejs (basically HTML) on start URL "localhost:9090"
 router.get("/", function (req, res) {
   res.render("../views/pages/start.ejs");
 });
 
+//* This is the route for refreshing the possibly new content,
+//* if the user pushed new markdown to their repo while being logged in
 router.get("/refresh", async function (req, res) {
   const refreshResponse = await updateUser(
     repositories[1].name,
@@ -24,10 +26,9 @@ router.get("/refresh", async function (req, res) {
   }
 });
 
-//* Querys the database, the table ":userId"
+//* Querys the database, the table being ":userId" (e.g. "molekylverkstan")
 router.get("/:user", async function (req, res) {
   if (req.params.user !== "favicon.ico") {
-    //* Fetches data from db
     const content = await fetchDb(req.params.user, "", "about");
     if (content == "404") {
       res.status(404).render("../views/pages/no_user.ejs");
@@ -37,10 +38,9 @@ router.get("/:user", async function (req, res) {
   }
 });
 
-//* Querys the database, the table ":userId" and row ":pageID"
+//* Querys the database, the table ":userId" and row containing the card id ":card"
 router.get("/:user/:card", async function (req, res) {
-  // const content = await fetchDb(req.params.user, req.params.card, "");
-  const content = await fetchDb(req.params.user, "", req.params.card);
+  const content = await fetchDb(req.params.user, req.params.card, "");
   if (content == "404") {
     res.status(404).render("../views/pages/no_page.ejs");
   } else {
@@ -48,7 +48,8 @@ router.get("/:user/:card", async function (req, res) {
   }
 });
 
-//* put-request, modifies data in the database
+//* put-request, this modifies data in the database
+//* mostly used for changing the linked cards for pages
 router.put("/card", async function (req, res) {
   const putResponse = await updateCard(
     req.body.user,
